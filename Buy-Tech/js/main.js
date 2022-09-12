@@ -116,3 +116,19 @@ function comprarButtonClicked() {
     shoppingCartItemsContainer.innerHTML = '';
     updateShoppingCartTotal();
 }
+
+const productos = [{ id:1, producto:"Teclado gamer", precio:9.99},
+                   { id:2, prducto: "MSI Geforce", precio:9.99},
+                   { id:3, prducto: "Joystick", precio:9.99},                                        
+                   { id:4, prducto: "Procesador intel", precio:19.99},
+                   { id:5, prducto: "Auricular gamer", precio:9.99},
+                   { id:6, prducto: "Mouse", precio:6.99},];
+                   
+const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
+
+//Almacenar producto por producto
+for (const producto of productos) {
+    guardarLocal(producto.id, JSON.stringify(producto));
+}
+// o almacenar array completo
+guardarLocal("listaProductos", JSON.stringify(productos));
