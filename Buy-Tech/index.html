@@ -11,8 +11,7 @@
     <title>Buy Tech</title>
 </head>
 
-<body>
-
+<body onload="onLoad()">
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="./index.html"><img src="./images/Logo.png" alt=""></a>
@@ -53,6 +52,7 @@
                 </form>
             </div>
         </div>
+
     </nav>
     <header>
         <div class="container">
@@ -72,7 +72,7 @@
                             <img class="item-image" src="./images/teclado.jpg">
 
                             <div class="item-details">
-                                <h4 class="item-price">9.99€</h4>
+                                <h4 class="item-price">$2.999</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -84,7 +84,7 @@
                             <img class="item-image" src="./images/Geforce3080.jpg">
 
                             <div class="item-details">
-                                <h4 class="item-price">9.99€</h4>
+                                <h4 class="item-price">$125.000</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                             <img class="item-image" src="./images/Joystick.jpg">
 
                             <div class="item-details">
-                                <h4 class="item-price">9.99€</h4>
+                                <h4 class="item-price">$7.599</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                             <img class="item-image" src="./images/MicroIntel.jpg">
 
                             <div class="item-details">
-                                <h4 class="item-price">19.99€</h4>
+                                <h4 class="item-price">$23.599</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
 
                             <img class="item-image" src="./images/Auricular.jpg">
                             <div class="item-details">
-                                <h4 class="item-price">19.99€</h4>
+                                <h4 class="item-price">$8.999</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -135,7 +135,7 @@
 
                             <img class="item-image" src="./images/Mouse.jpg">
                             <div class="item-details">
-                                <h4 class="item-price">6.99€</h4>
+                                <h4 class="item-price">$2.999</h4>
                                 <button class="item-button btn btn-primary addToCart">AÑADIR AL CARRITO</button>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="col-2">
                         <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
-                            <p class="item-price mb-0 shoppingCartItemPrice">6.99€</p>
+                            <p class="item-price mb-0 shoppingCartItemPrice">$2.999</p>
                         </div>
                     </div>
                     <div class="col-4">
@@ -201,7 +201,7 @@
                 <div class="col-12">
                     <div class="shopping-cart-total d-flex align-items-center">
                         <p class="mb-0">Total</p>
-                        <p class="ml-4 mb-0 shoppingCartTotal">0€</p>
+                        <p class="ml-4 mb-0 shoppingCartTotal">$</p>
                         <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
                             data-delay="2000">
                             <div class="toast-header">
@@ -255,6 +255,19 @@
     <!-- INICIA FOOTER -->
     <footer class="bg-dark p-3 mt-5">
         <p class="text-center m-0 text-muted">Buy Tech Company</p>
+        <div id="contenedor-api">
+            <div class="block">
+                <div id="location"></div>
+                <div id="date"></div>
+                <div id="description"></div>
+            </div>
+            <div class="block">
+                <div class="information-container">
+                     Temperatura
+                    <div class="info" id="temperature"></div>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- TERMINA FOOTER -->
 
@@ -272,7 +285,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
-
     <script src="./js/main.js"></script>
 </body>
 

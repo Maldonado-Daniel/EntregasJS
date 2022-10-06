@@ -1,3 +1,36 @@
+const API_KEY = `483935ac59203f7ccd03a7cfe1fe96ef`
+
+const fetchData = position => {
+    const { latitude, longitude } = position.coords;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+        .then(Response => Response.json())
+        .then(data => setWeatherData(data))
+}
+
+const setWeatherData = data => {
+    console.log(data);
+    const weatherData = {
+        location: data.name,
+        temperature: data.main.temp,
+        date: getDate(),
+    }
+
+    Object.keys(weatherData).forEach( key => {
+        document.getElementById(key).textContent = weatherData[key];
+    });
+}
+
+const getDate = () => {
+    let date = new Date();
+    return `${date.getDate()}-${ ( '0' + (date.getMonth() + 1)).slice(-2)}-${date.getFullYear()}`;
+}
+
+const onLoad = () => {
+    navigator.geolocation.getCurrentPosition(fetchData);
+}
+
+
+
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
 addToShoppingCartButtons.forEach((addToCartButton) => {
     addToCartButton.addEventListener('click', addToCartClicked);
@@ -87,7 +120,7 @@ function updateShoppingCartTotal() {
             '.shoppingCartItemPrice'
         );
         const shoppingCartItemPrice = Number(
-            shoppingCartItemPriceElement.textContent.replace('€', '')
+            shoppingCartItemPriceElement.textContent.replace('$', '')
         );
         const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
             '.shoppingCartItemQuantity'
@@ -97,7 +130,7 @@ function updateShoppingCartTotal() {
         );
         total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
     });
-    shoppingCartTotal.innerHTML = `${total.toFixed(2)}€`;
+    shoppingCartTotal.innerHTML = ` $${total.toFixed(2)}`;
 }
 
 function removeShoppingCartItem(event) {
@@ -117,13 +150,13 @@ function comprarButtonClicked() {
     updateShoppingCartTotal();
 }
 
-const productos = [{ id:1, producto:"Teclado gamer", precio:9.99},
-                   { id:2, prducto: "MSI Geforce", precio:9.99},
-                   { id:3, prducto: "Joystick", precio:9.99},                                        
-                   { id:4, prducto: "Procesador intel", precio:19.99},
-                   { id:5, prducto: "Auricular gamer", precio:9.99},
-                   { id:6, prducto: "Mouse", precio:6.99},];
-                   
+const productos = [{ id: 1, producto: "Teclado gamer", precio: 9.99 },
+{ id: 2, prducto: "MSI Geforce", precio: 9.99 },
+{ id: 3, prducto: "Joystick", precio: 9.99 },
+{ id: 4, prducto: "Procesador intel", precio: 19.99 },
+{ id: 5, prducto: "Auricular gamer", precio: 9.99 },
+{ id: 6, prducto: "Mouse", precio: 6.99 },];
+
 const guardarLocal = (clave, valor) => { localStorage.setItem(clave, valor) };
 
 //Almacenar producto por producto
@@ -140,12 +173,12 @@ const Toast = Swal.mixin({
     timer: 3000,
     timerProgressBar: true,
     didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-  })
-  
-  Toast.fire({
+})
+
+Toast.fire({
     icon: 'success',
     title: 'Iniciaste sesión con exito'
-  })
+})
